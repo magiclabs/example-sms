@@ -11,7 +11,7 @@ body {
   justify-self: center;
   background-color: #eee;
   text-align: center;
-  width: 380px;
+  min-width: 380px;
   padding: 27px 18px;
 }
 
@@ -19,6 +19,10 @@ h1 {
   margin: 0;
   padding-bottom: 18px;
   font-size: 18px;
+}
+
+h3{
+  margin: 0;
 }
 
 input {
@@ -30,4 +34,27 @@ input,
 button {
   padding: 9px;
   font-size: 18px;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.flex-col span{
+  margin: auto;
+}
+
+.flex-col button{
+  width: 75%;
+  margin: auto;
+}
+
+.methods {
+  margin-top: 1em;
+}
+
+.metadata {
+  text-align: left;
 }
