@@ -9,7 +9,7 @@
     <script src="https://auth.magic.link/sdk"></script>
     <script>
       /* 2️⃣ Initialize Magic Instance */
-      let magic = new Magic("pk_live_3B15A5460BEF9B4F");
+      let magic = new Magic("pk_live_426277674FDA7FBE");
 
       /* 3️⃣ Implement Render Function */
       const render = async () => {
@@ -28,8 +28,22 @@
           /* Get user metadata including phone */
           const userMetadata = await magic.user.getMetadata();
           html = `
-            <h1>logged in</h1>
-            <button onclick="handleLogout()">Logout</button>
+            <h2>You Are Logged in!</h2>
+            <div class="flex-col metadata">
+                  <div>
+                    <h3>phone</h3>
+                    <span>${userMetadata.phoneNumber}</span>
+                  </div>
+                  <div>
+                    <h3>address</h3>
+                    <span>${userMetadata.publicAddress}</span>
+                  </div>
+            </div>
+            <hr>
+            <div class="flex-col methods">
+              <button onclick="handleUpdatePhoneNumber()">updatePhoneNumber</button>
+              <button onclick="handleLogout()">Logout</button>
+            </div>
           `;
         }
 
@@ -52,6 +66,15 @@
         await magic.user.logout();
         render();
       };
+
+      const handleUpdatePhoneNumber = async () => {
+        try{
+          // Opens modal to begin update flow
+          await magic.user.updatePhoneNumber();
+        }catch(err){
+          console.error(err)
+        }
+      }
     </script>
   </head>
   <body onload="render()">
